@@ -1,0 +1,19 @@
+.DS_Store
+*/**/.DS_Store
+dist
+
+#*
+.#*
+*#
+*~
+.project
+.settings
+
+# used by the Makefile
+/build/_workspace/
+/build/cache/
+/build/bin/
+/geth*.zip
+
+# VS Code
+.vscode
