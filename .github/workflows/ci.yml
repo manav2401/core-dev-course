@@ -20,6 +20,9 @@ jobs:
         os: [ ubuntu-20.04 ] # list of os: https://github.com/actions/virtual-environments
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Install dependencies on Linux
+        if: runner.os == 'Linux'
+        run: sudo apt update && sudo apt install build-essential
       - name: Golang-ci install
         if: runner.os == 'Linux'
         run: make lintci-deps
