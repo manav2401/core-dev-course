@@ -20,6 +20,9 @@ jobs:
         os: [ ubuntu-20.04 ] # list of os: https://github.com/actions/virtual-environments
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Golang-ci install
+        if: runner.os == 'Linux'
+        run: make lintci-deps
       - name: Lint
         if: runner.os == 'Linux'
         run: make lint
