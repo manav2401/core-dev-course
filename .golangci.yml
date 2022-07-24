@@ -16,7 +16,6 @@ linters:
     - gocognit
     - gofmt
     - gomoddirectives
-    - gosec
     - makezero
     - nestif
     - nilerr
