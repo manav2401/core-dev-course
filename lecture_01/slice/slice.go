@@ -40,6 +40,7 @@ func main() {
 	// remove the element with index `1` from slice
 	index := 1
 	val, slice0 = removeElement(slice0, index)
+
 	if val == nil {
 		fmt.Printf("Unable to remove element from %d\n", index)
 	} else {
@@ -151,6 +152,7 @@ func removeElement(s []int, index int) (*int, []int) {
 
 	val := s[index]
 	s = append(s[:index], s[index+1:]...)
+
 	return &val, s
 }
 
@@ -207,6 +209,7 @@ func rotateLeft(s []int, i int) []int {
 	}
 
 	s = append(s[i:], s[:i]...)
+
 	return s
 }
 
@@ -217,6 +220,7 @@ func rotateRight(s []int, i int) []int {
 	}
 
 	s = append(s[len(s)-i:], s[:len(s)-i]...)
+
 	return s
 }
 
@@ -224,6 +228,7 @@ func rotateRight(s []int, i int) []int {
 func createCopy(s []int) []int {
 	c := make([]int, len(s))
 	copy(c, s)
+
 	return c
 }
 
@@ -238,7 +243,7 @@ func swapElements(s []int) []int {
 		l--
 	}
 
-	for i := 0; i < len(s); i += 2 {
+	for i := 0; i < l; i += 2 {
 		s[i], s[i+1] = s[i+1], s[i]
 	}
 
@@ -254,5 +259,6 @@ func sortSlice[T int | string](s []T, reverse bool) []T {
 			s[j], s[j-1] = s[j-1], s[j]
 		}
 	}
+
 	return s
 }
