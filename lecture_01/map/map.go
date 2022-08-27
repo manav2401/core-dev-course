@@ -55,6 +55,7 @@ func generateMultiDimensionalMap(l1, l2 int) map[int]map[int]struct{} {
 
 	for i := 0; i < l1; i++ {
 		idx := rand.Intn(100)
+
 		for {
 			// check if the index already exists
 			if _, ok := m[idx]; ok {
@@ -63,7 +64,9 @@ func generateMultiDimensionalMap(l1, l2 int) map[int]map[int]struct{} {
 				break
 			}
 		}
+
 		m[idx] = make(map[int]struct{})
+
 		for j := 0; j < l2; j++ {
 			// it's okay to override an existing sub-index
 			m[idx][rand.Intn(100)] = struct{}{}
@@ -158,6 +161,7 @@ func fibonacci(n int, m map[int]int) (int, map[int]int) {
 	val1, _ := fibonacci(n-1, m)
 	val2, _ := fibonacci(n-2, m)
 	m[n] = val1 + val2
+
 	return m[n], m
 }
 
@@ -174,6 +178,7 @@ func printSortedMultiDimensionalMap(m map[int]map[int]struct{}) {
 	firstOrderKeys = helper.SortSlice(firstOrderKeys, false)
 
 	fmt.Printf("Map before sorting: %v\n\n", m)
+
 	for _, v := range firstOrderKeys {
 		// collect the second order keys
 		secondOrderKeys := make([]int, 0, len(m[v]))
@@ -186,9 +191,11 @@ func printSortedMultiDimensionalMap(m map[int]map[int]struct{}) {
 
 		// print
 		fmt.Printf("Key: %d\nValues: ", v)
+
 		for _, v1 := range secondOrderKeys {
 			fmt.Printf("%d ", v1)
 		}
+
 		fmt.Printf("\n\n")
 	}
 }
