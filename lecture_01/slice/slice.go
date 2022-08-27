@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	helper "github.com/manav2401/core-dev-course/helpers"
 )
 
 func main() {
@@ -89,12 +91,12 @@ func main() {
 
 	// sorting the slice in ascending order
 	fmt.Printf("Slice6 before: %v and ", slice6)
-	slice6 = sortSlice(slice6, false)
+	slice6 = helper.SortSlice(slice6, false)
 	fmt.Printf("after sorting in ascending  order: %v\n", slice6)
 
 	// sorting the slice in descending order
 	fmt.Printf("Slice7 before: %v and ", slice7)
-	slice7 = sortSlice(slice7, true)
+	slice7 = helper.SortSlice(slice7, true)
 	fmt.Printf("after sorting in descending order: %v\n\n", slice7)
 
 	// creating a new slice of strings
@@ -103,12 +105,12 @@ func main() {
 
 	// sorting the string slice in ascending order using the same generic sort function
 	fmt.Printf("String slice before: %v and ", str)
-	str = sortSlice(str, false)
+	str = helper.SortSlice(str, false)
 	fmt.Printf("after sorting in ascending  order: %v\n", str)
 
 	// sorting the string slice in descending order using the same generic sort function
 	fmt.Printf("String slice before: %v and ", str2)
-	str2 = sortSlice(str2, true)
+	str2 = helper.SortSlice(str2, true)
 	fmt.Printf("after sorting in descending order: %v\n", str2)
 }
 
@@ -245,19 +247,6 @@ func swapElements(s []int) []int {
 
 	for i := 0; i < l; i += 2 {
 		s[i], s[i+1] = s[i+1], s[i]
-	}
-
-	return s
-}
-
-// sortSlice is a generic sort function which uses insertion sort
-// to perform ascending and descending sort on a slice of int or string
-func sortSlice[T int | string](s []T, reverse bool) []T {
-	// insertion sort
-	for i := 1; i < len(s); i++ {
-		for j := i; (!reverse && j > 0 && s[j-1] > s[j]) || (reverse && j > 0 && s[j-1] < s[j]); j-- {
-			s[j], s[j-1] = s[j-1], s[j]
-		}
 	}
 
 	return s
